@@ -19,8 +19,8 @@ define(['angular'], function (ng) {
 
       $routeProvider
         .when('/dflogin', {
-          templateUrl: CSTemplateProvider.view('index'),
-          controller: 'DigitalFingerprintController',
+          templateUrl: CSTemplateProvider.view('login'),
+          controller: 'CSDigitalFingerprintController',
           public: true
         });
 

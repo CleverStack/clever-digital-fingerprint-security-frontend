@@ -19,12 +19,12 @@ require.config({
     }
   ],
   paths: {
+    jquery: '../../components/jquery/jquery',
     angular: '../../components/angular/angular',
     ngResource: '../../components/angular-resource/angular-resource',
     ngRoute: '../../components/angular-route/angular-route',
     ngSanitize: '../../components/angular-sanitize/angular-sanitize',
-    ngStorage: '../components/angular-webstorage/angular-webstorage',
-    csDigitalFingerprintHelpers: 'cs_digitalfingerprint_helpers'
+    csDigitalFingerprintHelpers: 'scripts/cs_digitalfingerprint_helpers'
   },
   shim: {
     angular: {
@@ -39,11 +39,8 @@ require.config({
     ngSanitize: {
       deps: ['angular']
     },
-    ngStorage: {
-      deps: ['angular']
-    },
     csDigitalFingerprintHelpers: {
-      deps: ['angular']
+      deps: ['jquery', 'angular']
     }
   }
 });

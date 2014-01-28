@@ -1,16 +1,15 @@
 define(['angular', '../module'], function (ng) {
   'use strict';
 
-  ng.module('cs_session.controllers')
-  .controller('CSLoginController', [
+  ng.module('cs_digitalfingerprint.controllers')
+  .controller('CSDigitalFingerprintController', [
     '$scope',
     'CSSession',
     'CSSessionHelpers',
     '$log',
-    'CSDigitalFingerprintService',
-    '$storage',
+    'CSDigitalFingerprintFactory',
     '$sanitize',
-    function ($scope, CSSessionProvider, CSSessionHelpersProvider, $log, CSDigitalFingerprintService, $storage, $sanitize) {
+    function ($scope, CSSessionProvider, CSSessionHelpersProvider, $log, CSDigitalFingerprintFactory, $sanitize) {
       $scope.helpers = CSSessionHelpersProvider;
 
       $scope.credentials = {
@@ -23,12 +22,12 @@ define(['angular', '../module'], function (ng) {
           return {
               "username" : $sanitize(credentials.username),
               "password" : $sanitize(credentials.password),
-              "fingerprint" : $sanitize(CSDigitalFingerprintService.fingerprint.front)
+              "fingerprint" : $sanitize(CSDigitalFingerprintFactory.fingerprint.front)
           }
       }
 
       $scope.login = function () {
-        CSDigitalFingerprintService.runPrints(function()
+        CSDigitalFingerprintFactory.runPrints(function()
         {
             //incude the users front fingerprint to the login credentials used to create session token
             CSSessionProvider.login($scope.sanitizeCredentials($scope.credentials));
@@ -40,8 +39,8 @@ define(['angular', '../module'], function (ng) {
           console.log("LoginController:",event,data);
           if (data && data.token) {
             console.log("LoginController: session token received: "+data.token);
-            $storage.add('fingerprint', CSDigitalFingerprintService.fingerprint.front);
-            $storage.add('token', data.token);
+            localStorage.setItem('fingerprint', CSDigitalFingerprintFactory.fingerprint.front);
+            localStorage.setItem('token', data.token);
           }
       });
 
