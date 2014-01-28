@@ -17,3 +17,6 @@ It belongs in the array of required modules.
 
 ## Usage
 Go to /dflogin (or integrate with main login form)
+
+## Diagram
+![Digital Fingerprint Security](/assets/digital-fingerprint-diagram.jpg "Digital Fingerprint Security")
