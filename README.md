@@ -3,7 +3,7 @@
 This module provides digital fingerprint security for your web application.
 
 ## Dependencies
-This module requires the cleverstack backend digital fingerprint security module to be installed.
+This module requires the [cleverstack backend digital fingerprint security module](https://github.com/clevertech/clever-digitial-fingerprint-security-backend/) to be installed.
 
 ## Setup
 1. Add 'cs_digitalfingerprint' to your app/modules/main.js file.
